@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H2@HOME Control Panel</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
         body { font-family: 'Inter', sans-serif; }
     </style>
     
-    <!-- Firebase Libraries -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -21,7 +19,7 @@
         // NOTE: These variables must be defined globally before the script runs if outside this environment.
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'gec-h2-at-home-2025'; 
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? initialAuthToken : null;
 
         // --- FIREBASE AND HARDWARE PATH SETUP ---
         const PROTOTYPE_USER_ID = "esp32_prototype_device_1";
@@ -155,24 +153,20 @@
             <p id="status-message" class="text-sm text-yellow-500 mt-2">Connecting to H2@HOME Device...</p>
         </header>
 
-        <!-- System Status Section -->
         <div class="bg-gray-800 p-6 rounded-xl shadow-2xl mb-8 border border-blue-700">
             <h2 class="text-2xl font-bold mb-4 border-b border-blue-600 pb-2">System Status</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 
-                <!-- Operation Status -->
                 <div class="p-4 rounded-lg border-2 border-gray-700">
                     <p class="text-sm text-gray-400">Current Operation</p>
                     <p id="op-status" class="text-3xl font-bold mt-1 text-gray-500">STANDBY</p>
                 </div>
                 
-                <!-- Mode Status -->
                 <div class="p-4 rounded-lg border-2 border-gray-700">
                     <p class="text-sm text-gray-400">Control Mode</p>
                     <p id="mode-status" class="text-3xl font-bold text-yellow-400 mt-1">AUTO-SCHEDULED</p>
                 </div>
 
-                <!-- Cost Status -->
                 <div class="p-4 rounded-lg border-2 border-gray-700">
                     <p class="text-sm text-gray-400">Electricity Rate</p>
                     <p id="cost-status" class="text-3xl font-bold mt-1 text-red-400">ON-PEAK</p>
@@ -180,22 +174,18 @@
             </div>
         </div>
 
-        <!-- Hydrogen Level Section -->
         <div class="bg-gray-800 p-6 rounded-xl shadow-2xl mb-8 border border-blue-700">
             <h2 class="text-2xl font-bold mb-4 border-b border-blue-600 pb-2">Hydrogen Tank Level</h2>
             
             <div class="flex flex-col md:flex-row items-center gap-8">
-                <!-- Gauge Visualization -->
                 <div class="flex flex-col items-center justify-center w-full md:w-1/3">
-                    <!-- Placeholder for H2 Icon -->
-                    <span class="text-8xl" style="color: #007FFF;">
-                        &#x269B; <!-- A simple icon resembling an industrial symbol -->
-                    </span>
+                    <span class="text-6xl" style="color: #007FFF;">
+                        &#x2614; </span>
+                    <p class="text-sm text-gray-400 mt-1">H₂O Input</p>
                     <p id="h2-percent" class="text-5xl font-extrabold text-blue-400 mt-2">0.0%</p>
                     <p id="h2-mass" class="text-lg text-gray-400 mt-1">0.00 kg / 6.3 kg</p>
                 </div>
 
-                <!-- Progress Bar -->
                 <div class="w-full md:w-2/3">
                     <div class="h-6 bg-gray-700 rounded-full overflow-hidden">
                         <div 
@@ -209,10 +199,8 @@
             </div>
         </div>
 
-        <!-- Control & Maintenance Section -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
-            <!-- Control Panel -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border border-blue-700">
                 <h2 class="text-2xl font-bold mb-4 border-b border-blue-600 pb-2">System Control</h2>
                 <p class="text-sm text-gray-400 mb-4">Toggle between automated cost-saving mode and immediate manual fill.</p>
@@ -225,7 +213,6 @@
                 </button>
             </div>
 
-            <!-- Maintenance Panel -->
             <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border border-blue-700">
                 <h2 class="text-2xl font-bold mb-4 border-b border-blue-600 pb-2">Longevity & Maintenance</h2>
                 <div class="space-y-3">
@@ -247,3 +234,4 @@
     </div>
 </body>
 </html>
+```eof
